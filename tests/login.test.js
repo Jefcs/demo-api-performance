@@ -2,11 +2,15 @@ import http from 'k6/http'
 import { check, sleep } from 'k6'
 
 export const options = {
-  iterations: 10,
   thresholds: {
     http_req_duration: ['p(95)<3'],
     http_req_failed: ['rate<0.01'], // less than 1% errors
   },
+  stages: [
+    { duration: '30s', target: 50 }, // ramp up to 10 users over 30 seconds
+    { duration: '1m', target: 20 }, // stay at 10 users for 1 minute
+    { duration: '30s', target: 5 }, // ramp down to 0 users
+  ],
 }
 
 export default function () {
