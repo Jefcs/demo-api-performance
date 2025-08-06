@@ -11,11 +11,19 @@ This project is an API performance testing framework built with [k6](https://k6.
 ## Project Structure
 
 ```
-config/           # Environment configuration files
-fixtures/         # Test data for requests
-helpers/          # Helper functions (e.g., authentication)
-tests/            # Test scripts for different API endpoints
-utils/            # Utility functions (e.g., variable management)
+demo-api-performance/
+├── config/
+│   └── local.json
+├── fixtures/
+│   └── postLogin.json
+├── helpers/
+│   └── authentication.js
+├── tests/
+│   ├── login.test.js
+│   └── transferencias.test.js
+├── utils/
+│   └── variables.js
+└── README.md
 ```
 
 ## How to Use
