@@ -1,6 +1,7 @@
 import http from 'k6/http'
 import { check, sleep } from 'k6'
 const postLogin = JSON.parse(open('../fixtures/postLogin.json'))
+import { getBaseUrl } from '../utils/variables.js'
 
 export const options = {
   thresholds: {
@@ -15,7 +16,7 @@ export const options = {
 }
 
 export default function () {
-  const url = 'http://localhost:3000/login'
+  const url = `${getBaseUrl()}/login`
   const payload = JSON.stringify(postLogin)
 
   const params = {
